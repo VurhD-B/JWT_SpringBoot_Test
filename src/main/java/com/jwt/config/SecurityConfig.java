@@ -44,6 +44,7 @@ public class SecurityConfig {
                 request.requestMatchers(POST, "/api/admin/**").hasAnyAuthority(ADMIN_WRITE.name());
                 request.requestMatchers(PUT, "/api/admin/**").hasAnyAuthority(ADMIN_WRITE.name());
                 request.requestMatchers(DELETE, "/api/admin/**").hasAnyAuthority(ADMIN_WRITE.name());
+                request.anyRequest().authenticated();
             })
             .sessionManagement(manager -> manager.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .logout(logout -> {
